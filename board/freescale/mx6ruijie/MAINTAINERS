@@ -1,0 +1,9 @@
+MX6RUIJIE BOARD
+M:	Fabio Estevam <fabio.estevam@freescale.com>
+S:	Maintained
+F:	board/freescale/mx6ruijie/
+F:	include/configs/mx6ruijie.h
+F:	configs/mx6dlruijie_defconfig
+F:	configs/mx6qruijie_defconfig
+F:	configs/mx6qpruijie_defconfig
+F:	configs/mx6ruijie_spl_defconfig
