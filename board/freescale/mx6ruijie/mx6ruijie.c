@@ -505,6 +505,8 @@ int check_mmc_autodetect(void)
 	return 0;
 }
 
+//Allon delete for new version uboot this function define in mmc.c
+#if 0  
 void board_late_mmc_env_init(void)
 {
 	char cmd[32];
@@ -524,6 +526,7 @@ void board_late_mmc_env_init(void)
 	sprintf(cmd, "mmc dev %d", dev_no);
 	run_command(cmd, 0);
 }
+#endif
 
 #if defined(CONFIG_MX6DL) && defined(CONFIG_MXC_EPDC)
 vidinfo_t panel_info = {
