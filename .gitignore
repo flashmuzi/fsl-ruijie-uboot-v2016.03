@@ -82,6 +82,7 @@ GSYMS
 GTAGS
 
 /.pc/*
+mx6qpruijie_defconfig
 
 *.orig
 *~
