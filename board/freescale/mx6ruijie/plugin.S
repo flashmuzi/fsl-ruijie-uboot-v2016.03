@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012-2015 Freescale Semiconductor, Inc.
+ * Copyright (C) 2012-2016 Freescale Semiconductor, Inc.
  *
  * SPDX-License-Identifier:	GPL-2.0+
  */
@@ -7,7 +7,7 @@
 #include <config.h>
 
 /* DDR script */
-.macro imx6dqpsabresd_ddr_setting
+.macro imx6dqpruijie_ddr_setting
 	ldr r0, =IOMUXC_BASE_ADDR
 	ldr r1, =0x000c0000
 	str r1, [r0, #0x798]
@@ -42,6 +42,18 @@
 	str r1, [r0, #0x50c]
 	str r1, [r0, #0x5b8]
 	str r1, [r0, #0x5c0]
+
+	ldr r1, =0x00018200
+	str r1, [r0, #0x534]
+	ldr r1, =0x00008000
+	str r1, [r0, #0x538]
+	ldr r1, =0x00018200
+	str r1, [r0, #0x53c]
+	str r1, [r0, #0x540]
+	str r1, [r0, #0x544]
+	str r1, [r0, #0x548]
+	str r1, [r0, #0x54c]
+	str r1, [r0, #0x550]
 
 	ldr r1, =0x00020000
 	str r1, [r0, #0x774]
@@ -109,9 +121,9 @@
 	str r2, [r1, #0x824]
 	str r2, [r1, #0x828]
 
-	ldr r2, =0x24912249
+	ldr r2, =0x24912489
 	str r2, [r0, #0x8c0]
-	ldr r2, =0x24914289
+	ldr r2, =0x24914452
 	str r2, [r1, #0x8c0]
 
 	ldr r2, =0x00000800
@@ -130,7 +142,7 @@
 
 	ldr r2, =0x01FF00DB
 	str r2, [r0, #0x014]
-	ldr r2, =0x00001740
+	ldr r2, =0x00011740
 	str r2, [r0, #0x018]
 
 	ldr r2, =0x00008000
@@ -189,7 +201,7 @@
 	str r2, [r0, #0x01c]
 .endm
 
-.macro imx6dqsabresd_ddr_setting
+.macro imx6dqruijie_ddr_setting
 	ldr r0, =IOMUXC_BASE_ADDR
 	ldr r1, =0x000c0000
 	str r1, [r0, #0x798]
@@ -342,7 +354,7 @@
 	str r2, [r0, #0x01c]
 .endm
 
-.macro imx6dlsabresd_ddr_setting
+.macro imx6dlruijie_ddr_setting
 	ldr r0, =IOMUXC_BASE_ADDR
 	ldr r1, =0x000c0000
 	str r1, [r0, #0x774]
@@ -495,7 +507,7 @@
 	str r2, [r0, #0x01c]
 .endm
 
-.macro imx6solosabresd_ddr_setting
+.macro imx6soloruijie_ddr_setting
 	ldr r0, =IOMUXC_BASE_ADDR
 	ldr r1, =0x000c0000
 	str r1, [r0, #0x774]
@@ -640,20 +652,26 @@
 	ldr r1, =0xF00000CF
 	str r1, [r0, #0x10]
 
+#if defined(CONFIG_MX6QP)
+	ldr r1, =0x77177717
+	str r1, [r0, #0x18]
+	str r1, [r0, #0x1c]
+#else
 	ldr r1, =0x007F007F
 	str r1, [r0, #0x18]
 	str r1, [r0, #0x1c]
+#endif
 .endm
 
 .macro imx6_ddr_setting
 #if defined (CONFIG_MX6SOLO)
-	imx6solosabresd_ddr_setting
+	imx6soloruijie_ddr_setting
 #elif defined (CONFIG_MX6DL)
-	imx6dlsabresd_ddr_setting
+	imx6dlruijie_ddr_setting
 #elif defined (CONFIG_MX6QP)
-	imx6dqpsabresd_ddr_setting
+	imx6dqpruijie_ddr_setting
 #elif defined (CONFIG_MX6Q)
-	imx6dqsabresd_ddr_setting
+	imx6dqruijie_ddr_setting
 #else
 	#error "SOC not configured"
 #endif

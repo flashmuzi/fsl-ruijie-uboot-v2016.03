@@ -1,16 +1,13 @@
 /*
- * Copyright (C) 2012-2015 Freescale Semiconductor, Inc.
+ * Copyright (C) 2012-2016 Freescale Semiconductor, Inc.
  *
  * Configuration settings for the Freescale i.MX6Q SabreSD board.
  *
  * SPDX-License-Identifier:	GPL-2.0+
  */
 
-#ifndef __MX6QSABRESD_CONFIG_H
-#define __MX6QSABRESD_CONFIG_H
-
-#include <asm/arch/imx-regs.h>
-#include <asm/imx-common/gpio.h>
+#ifndef __MX6QRUIJIE_CONFIG_H
+#define __MX6QRUIJIE_CONFIG_H
 
 #ifdef CONFIG_SPL
 #define CONFIG_SPL_LIBCOMMON_SUPPORT
@@ -18,49 +15,24 @@
 #include "imx6_spl.h"
 #endif
 
-#define DEBUG_6QP
-
 #define CONFIG_MACH_TYPE	3980
-
-#ifndef DEBUG_6QP
-#define CONFIG_MXC_UART_BASE	UART1_BASE 
-#else
 #define CONFIG_MXC_UART_BASE	UART4_BASE            //Allon change to UART4 
-#endif
-
-#ifndef DEBUG_6QP
-#define CONFIG_CONSOLE_DEV		"ttymxc0"
-#else
-#define CONFIG_CONSOLE_DEV 		"ttymxc3"		
-#endif
-
-#ifndef DEBUG_6QP
+#define CONFIG_CONSOLE_DEV		"ttymxc3"   //Allon fit ruijie board
 #define CONFIG_MMCROOT			"/dev/mmcblk2p2"  /* SDHC3 */
-#else
-#define CONFIG_MMCROOT			"/dev/mmcblk1p2"
-#endif
+
 #if defined(CONFIG_MX6QP)
-#define CONFIG_DEFAULT_FDT_FILE	"imx6qp-sabresd.dtb"
-#define PHYS_SDRAM_SIZE		(2u * 1024 * 1024 * 1024)	//Allon change to 2GB DDR	
+#define PHYS_SDRAM_SIZE		(1u * 1024 * 1024 * 1024)
 #elif defined(CONFIG_MX6Q)
-#define CONFIG_DEFAULT_FDT_FILE	"imx6q-sabresd.dtb"
 #define PHYS_SDRAM_SIZE		(1u * 1024 * 1024 * 1024)
 #elif defined(CONFIG_MX6DL)
-#define CONFIG_DEFAULT_FDT_FILE	"imx6dl-sabresd.dtb"
 #define PHYS_SDRAM_SIZE		(1u * 1024 * 1024 * 1024)
 #elif defined(CONFIG_MX6SOLO)
-#define CONFIG_DEFAULT_FDT_FILE	"imx6dl-sabresd.dtb"
 #define PHYS_SDRAM_SIZE		(512u * 1024 * 1024)
 #endif
 
-#include "mx6sabre_common.h"
+#include "mx6ruijie_common.h"
 
-#ifndef DEBUG_6QP
 #define CONFIG_SYS_FSL_USDHC_NUM	3
-#else
-#define CONFIG_SYS_FSL_USDHC_NUM    3
-#endif
-
 #define CONFIG_SYS_MMC_ENV_DEV		1	/* SDHC3 */
 #define CONFIG_SYS_MMC_ENV_PART     0   /* user partition */
 
@@ -88,12 +60,6 @@
 #define CONFIG_PCIE_IMX_PERST_GPIO	IMX_GPIO_NR(7, 12)
 #define CONFIG_PCIE_IMX_POWER_GPIO	IMX_GPIO_NR(3, 19)
 #endif
-
-/* PMIC */
-#define CONFIG_POWER
-#define CONFIG_POWER_I2C
-#define CONFIG_POWER_PFUZE100
-#define CONFIG_POWER_PFUZE100_I2C_ADDR	0x08	/*johncheng> pmic> i2c addr*/
 
 /* USB Configs */
 #define CONFIG_CMD_USB
@@ -130,4 +96,4 @@
 	#define CONFIG_WAVEFORM_BUF_SIZE		0x200000
 #endif /* CONFIG_SPLASH_SCREEN && CONFIG_MXC_EPDC */
 
-#endif                         /* __MX6QSABRESD_CONFIG_H */
+#endif                         /* __MX6QRUIJIE_CONFIG_H */

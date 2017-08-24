@@ -127,5 +127,5 @@ defined(CONFIG_MX6DL)) && !defined(CONFIG_MX6SOLO)
 #define CONFIG_MXC_OCOTP
 
 /* LDO Bypass */
-#define CONFIG_LDO_BYPASS_CHECK
+/* #define CONFIG_LDO_BYPASS_CHECK  Allon del it */
 #endif
