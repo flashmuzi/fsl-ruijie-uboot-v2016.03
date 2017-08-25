@@ -217,7 +217,7 @@
 		"findfdt="\
 			"if test $fdt_file = undefined; then " \
 				"if test $board_name = RUIJIE && test $board_rev = MX6QP; then " \
-					"setenv fdt_file imx6qp-ruijie-sabresd.dtb; fi; " \
+					"setenv fdt_file imx6qp-ruijie-voip.dtb; fi; " \
 				"if test $fdt_file = undefined; then " \
 					"echo WARNING: Could not determine dtb to use; fi; " \
 			"fi;\0" \
