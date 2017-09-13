@@ -18,7 +18,7 @@
 #define CONFIG_MACH_TYPE	3980
 #define CONFIG_MXC_UART_BASE	UART4_BASE            //Allon change to UART4 
 #define CONFIG_CONSOLE_DEV		"ttymxc3"   //Allon fit ruijie board
-#define CONFIG_MMCROOT			"/dev/mmcblk2p2"  /* SDHC3 */
+#define CONFIG_MMCROOT			"/dev/mmcblk2p2"  /* SDHC3 */ //won't take effect if mmcautodetec open
 
 #if defined(CONFIG_MX6QP)
 #define PHYS_SDRAM_SIZE		(1u * 1024 * 1024 * 1024)
@@ -33,7 +33,7 @@
 #include "mx6ruijie_common.h"
 
 #define CONFIG_SYS_FSL_USDHC_NUM	3
-#define CONFIG_SYS_MMC_ENV_DEV		1	/* SDHC3 */
+#define CONFIG_SYS_MMC_ENV_DEV		2	/* SDHC3 */ //won't take effect if mmcautodetec open
 #define CONFIG_SYS_MMC_ENV_PART     0   /* user partition */
 
 #ifdef CONFIG_SYS_USE_SPINOR

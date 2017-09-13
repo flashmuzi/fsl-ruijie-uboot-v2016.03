@@ -339,14 +339,17 @@ struct fsl_esdhc_cfg usdhc_cfg[3] = {
 //Allon change 20161129
 #define USDHC2_CD_GPIO	IMX_GPIO_NR(2, 1)
 
+//Allon change for register value indicate the correct sd order,no need minus/add 1
 int board_mmc_get_env_dev(int devno)
 {
-	return devno - 1;
+	return devno;
+	//return devno - 1;
 }
 
 int mmc_map_to_kernel_blk(int devno)
 {
-	return devno + 1;
+	return devno;
+	//return devno + 1;
 }
 
 int board_mmc_getcd(struct mmc *mmc)
@@ -1162,6 +1165,7 @@ void ldo_mode_set(int ldo_bypass)
 #ifdef CONFIG_CMD_BMODE
 static const struct boot_mode board_boot_modes[] = {
 	/* 4 bit bus width */
+	{"sd1",  MAKE_CFGVAL(0x40, 0x20, 0x00, 0x00)},
 	{"sd2",	 MAKE_CFGVAL(0x40, 0x28, 0x00, 0x00)},
 /*	{"sd3",	 MAKE_CFGVAL(0x40, 0x30, 0x00, 0x00)}, */
 	{"emmc", MAKE_CFGVAL(0x60, 0x58, 0x00, 0x00)},
